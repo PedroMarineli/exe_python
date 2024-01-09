@@ -54,7 +54,10 @@ def main():
 
 def par_ou_impar():
     exibir_titulo('Par ou ímpar')
-      
+    if int(input('\nDigite um número: ')) % 2 == 0:
+        print('O número digitado é par')
+    else:
+        print('O número digitado é ímpar')
 
 def exibir_titulo(texto):
     os.system('clear')
