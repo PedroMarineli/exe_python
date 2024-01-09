@@ -1,5 +1,7 @@
 import os
 
+lista =[]
+
 def exibir_opcoes():
     print('Exercícios em Python\n')
     print('1. Par ou ímpar')
@@ -15,8 +17,6 @@ def exibir_opcoes():
 
     print()
 
-
-
 def escolher_opcao():
     try:
         opcao_escolhida = int(input('Escolha uma opção: '))
@@ -27,11 +27,11 @@ def escolher_opcao():
             case 2:
                 idade()
             case 3:
-                print('3')
+                usuario()
             case 4:
-                print('4')
+                coordenadas()
             case 5:
-                print('5')
+                crie_e_percorra_uma_lista()
             case 6:
                 print('6')
             case 7:
@@ -80,6 +80,67 @@ def idade():
 def voltar_ao_menu():
     input('\nPressione enter para voltar ao menu.')
     main()
+
+def usuario():
+    exibir_titulo('Usuário')
+
+    usuario = 'administrador'
+    senha = '123456'
+
+    print('Digite o usuário e a senha:\n')
+
+    usuario1 = input('Usuário: ')
+    senha1 = input('Senha: ')
+
+    if usuario == usuario1 and senha == senha1:
+        print('\nUsuário e senha corretos')
+    else:
+        print('\nUsuário ou senha incorretos')
+    voltar_ao_menu()
+
+def coordenadas():
+    exibir_titulo('Coordenadas')
+
+    x = int(input('coordenada x: '))
+    y = int(input('coordenada y: '))
+    quadrante = 0
+
+    if x > 0 and y > 0:
+         quadrante = 'no primeiro quadrante'
+    elif x < 0 and y > 0:
+        quadrante = 'no segundo quadrante'
+    elif x < 0 and y < 0:
+        quadrante = 'no terceiro quadrante'
+    elif x > 0 and y < 0:
+        quadrante = 'no quarto quadrante'
+    else:
+        quadrante = 'localizado no eixo ou origem'
+    print(f'\nO ponto está {quadrante}')
+    voltar_ao_menu()
+
+def crie_e_percorra_uma_lista():
+    exibir_titulo('Crie e percorra uma lista')
+
+    print('1. Adicionar item')
+    print('2. Visualizar lista')
+
+    try:
+        opcao_escolhida = int(input('\nEscolha uma opção: '))
+
+        match opcao_escolhida:
+            case 1:
+                nome = input('\nDigite o nome do item: ')
+                lista.append(nome)
+            case 2:
+                print()
+                for nome in lista:
+                    print(f'- {nome}') 
+            case _:
+                print('opção inválida')
+    except:
+        print('opção inválida')
+
+    voltar_ao_menu()
 
 if __name__ == '__main__':
     main()
