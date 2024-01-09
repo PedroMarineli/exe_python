@@ -1,6 +1,6 @@
 import os
 
-lista =[]
+lista = []
 
 def exibir_opcoes():
     print('Exercícios em Python\n')
@@ -33,9 +33,9 @@ def escolher_opcao():
             case 5:
                 crie_e_percorra_uma_lista()
             case 6:
-                print('6')
+                soma_impares()
             case 7:
-                print('7')
+                decrescente()
             case 8:
                 print('8')
             case 9:
@@ -139,6 +139,27 @@ def crie_e_percorra_uma_lista():
                 print('opção inválida')
     except:
         print('opção inválida')
+
+    voltar_ao_menu()
+
+def soma_impares():
+    exibir_titulo('Soma dos números ímpares de 1 a 10')
+
+    lista_impares = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    soma = 0
+
+    for impar in lista_impares:
+        if impar % 2 != 0:
+            soma = soma + impar
+    print(f'A soma dos números ímpares de 1 a 10 é {soma}')
+    voltar_ao_menu()
+
+def decrescente():
+    exibir_titulo('Números de 1 a 10 em ordem decrescente')
+
+    for i in range(10, 0, -1):
+    print(i)
+    
 
     voltar_ao_menu()
 
