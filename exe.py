@@ -1,6 +1,7 @@
 import os
 
 lista = []
+listaNum = []
 
 def exibir_opcoes():
     print('Exercícios em Python\n')
@@ -12,8 +13,8 @@ def exibir_opcoes():
     print('6. Soma dos números ímpares de 1 a 10')
     print('7. Números de 1 a 10 em ordem decrescente')
     print('8. Tabuada')
-    print('9. Soma de todos os elementos')
-    print('10. Média dos valores')
+    print('9. Soma e média de todos os elementos')
+    print('10. Fechar programa')
 
     print()
 
@@ -37,11 +38,11 @@ def escolher_opcao():
             case 7:
                 decrescente()
             case 8:
-                print('8')
+                tabuada()
             case 9:
-                print('9')
+                soma_media()
             case 10:
-                print('10')
+                exibir_titulo('Finalizando app...')
             case _:
                 print('opção inválida')
     except:
@@ -115,6 +116,7 @@ def coordenadas():
         quadrante = 'no quarto quadrante'
     else:
         quadrante = 'localizado no eixo ou origem'
+
     print(f'\nO ponto está {quadrante}')
     voltar_ao_menu()
 
@@ -134,7 +136,7 @@ def crie_e_percorra_uma_lista():
             case 2:
                 print()
                 for nome in lista:
-                    print(f'- {nome}') 
+                    print(f'-> {nome}') 
             case _:
                 print('opção inválida')
     except:
@@ -158,9 +160,59 @@ def decrescente():
     exibir_titulo('Números de 1 a 10 em ordem decrescente')
 
     for i in range(10, 0, -1):
-    print(i)
+        print(i)
     
+    voltar_ao_menu()
 
+def tabuada():
+    exibir_titulo('Tabuada')
+    n = int(input('Digite Um número: '))
+    print()
+    for i in range(1, 11, 1):
+        print(f'{i} x {n} = {i*n}')
+    voltar_ao_menu()
+
+def soma_media():
+    exibir_titulo('Soma e Média')
+    print('1. Adicionar número')
+    print('2. Visualizar lista')
+    print('3. Somar todos os elementos')
+    print('4. Média de todos os elementos')
+
+    try:
+        opcao_escolhida = int(input('\nEscolha uma opção: '))
+
+        match opcao_escolhida:
+            case 1:
+                num = int(input('\nDigite o número: '))
+                listaNum.append(num)
+            case 2:
+                print()
+                for num in listaNum:
+                    print(f'-> {num}') 
+            case 3:
+                soma = 0
+                for num in listaNum:
+                    soma = soma + num 
+                print(f'\nA soma dos numeros é {soma}') 
+            case 4:
+                try:
+                    media = 0 
+                    soma = 0
+                    for num in listaNum:
+                        soma = soma + num 
+                        media = media + 1
+                    print(f'\nA média dos numeros é {round(soma/media, 2)}') 
+                except ZeroDivisionError:
+                    print("A lista está vazia, não é possível calcular a média.")
+                except Exception as e:
+                    print(f"Ocorreu um erro: {e}")
+            case _:
+                print('opção inválida')
+                
+    except:
+        print('opção inválida')
+    
     voltar_ao_menu()
 
 if __name__ == '__main__':
